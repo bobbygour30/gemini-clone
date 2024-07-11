@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+
+
+
+
+
+.main .greet span {
+    background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.result::-webkit-scrollbar{
+    display: none;
+}
+@keyframes loader {
+    0% {
+      background-position: -800px 0px;
+    }
+    100% {
+      background-position: 800px 0px;
+    }
+  }
+  
+  @media (max-width:600px) {
+    .sidebar{
+      display: none;
+    }
+  }
+  @media (max-width:600px) {
+    .main-bottom input{
+      flex: none;
+      width: 150px;
+    }
+    .main-bottom img{
+      width: 20px;
+    }
+    .search-box{
+      padding: 5px 10px;
+    }
+    .search-box div{
+      gap: 5px;
+    }
+  }
