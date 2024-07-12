@@ -1,5 +1,3 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 let genAI = null;
 let model = null;
 let isInitializing = false;
@@ -16,10 +14,13 @@ const generationConfig = {
 async function initializeGenerativeAI(apiKey) {
   try {
     isInitializing = true;
-    genAI = new GoogleGenerativeAI(apiKey);
-    model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-    });
+    if (typeof window !== "undefined") {
+      const { GoogleGenerativeAI } = await import("@google/generative-ai");
+      genAI = new GoogleGenerativeAI(apiKey);
+      model = genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+      });
+    }
     isInitializing = false;
   } catch (error) {
     console.error('Failed to initialize generative AI:', error);
@@ -56,4 +57,3 @@ async function run(prompt) {
 }
 
 export default run;
-
